@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Double Take — Spot the Difference</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="title-block">
+      <h1>DOUBLE TAKE</h1>
+      <p class="tagline">Spot the difference — two pictures, a handful of lies.</p>
+    </div>
+    <div class="scene-dots" aria-label="Scenes">
+      <span class="scene-dot current">1</span>
+      <span class="scene-dot">2</span>
+      <span class="scene-dot">3</span>
+      <span class="scene-dot">4</span>
+    </div>
+    <div class="stats">
+      <span id="score">Score 0</span>
+      <span id="hearts" aria-label="Lives">♥♥♥</span>
+    </div>
+  </header>
+
+  <div class="timer-row">
+    <span id="scene-name">Scene 1 of 4 — Harbour Morning</span>
+    <div class="timer-bar"><div id="timer-fill"></div></div>
+    <span id="timer-text">1:30</span>
+  </div>
+
+  <main>
+    <figure class="panel">
+      <figcaption>Picture A</figcaption>
+      <canvas id="panel-a" width="540" height="360"></canvas>
+    </figure>
+    <figure class="panel">
+      <figcaption>Picture B</figcaption>
+      <canvas id="panel-b" width="540" height="360"></canvas>
+    </figure>
+  </main>
+
+  <div class="hud">
+    <span id="counter">Found 0 / 5 · 5 left</span>
+    <button id="hint-btn" type="button">Hint <span id="hint-count">(3)</span></button>
+    <button id="restart-btn" type="button">Restart scene</button>
+    <button id="mute-btn" type="button">Sound on</button>
+  </div>
+  <p id="message">Find every difference before the clock runs out.</p>
+  <p class="keys">Click a difference on either picture · H hint · R restart · M sound</p>
+
+  <div id="overlay-start" class="overlay">
+    <div class="card">
+      <h2>DOUBLE TAKE</h2>
+      <p class="card-sub">A spot-the-difference hunt in four hand-drawn scenes.</p>
+      <ul class="howto">
+        <li>Two pictures sit side by side. A few small things differ.</li>
+        <li>Click a difference on either picture to ring it — on both.</li>
+        <li>Wrong clicks cost 5 seconds. Hints are limited to 3 a scene.</li>
+        <li>Beat the clock in all four scenes to win. Difficulty rises each scene.</li>
+      </ul>
+      <button id="start-btn" type="button">Start the hunt</button>
+      <p id="start-best" class="best"></p>
+    </div>
+  </div>
+
+  <div id="overlay-scene" class="overlay hidden">
+    <div class="card">
+      <h2>Scene complete!</h2>
+      <p id="scene-stars" class="stars">★★★</p>
+      <p id="scene-bonus" class="bonus">Time bonus +0</p>
+      <p id="scene-score" class="score-line">Score 0</p>
+      <button id="scene-next" type="button">Next scene</button>
+    </div>
+  </div>
+
+  <div id="overlay-over" class="overlay hidden">
+    <div class="card">
+      <h2>Out of hearts</h2>
+      <p class="card-sub">The clock beat you this time. The differences are still hiding.</p>
+      <button id="retry-btn" type="button">Try again</button>
+      <button id="menu-btn" type="button" class="secondary">Back to start</button>
+    </div>
+  </div>
+
+  <div id="overlay-win" class="overlay hidden">
+    <div class="card">
+      <h2>You found them all!</h2>
+      <p class="card-sub">Every difference across all four scenes — sharp eyes.</p>
+      <p class="final-score"><span id="final-score">0</span></p>
+      <p id="final-stars" class="score-line">Stars 0 / 12</p>
+      <p id="final-time" class="score-line">Time 0:00</p>
+      <p id="best-score" class="best">Best 0</p>
+      <button id="again-btn" type="button">Play again</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
